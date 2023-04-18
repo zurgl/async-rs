@@ -5,6 +5,7 @@ members = [
   "async02",
   "async03",
   "async04",
+  "async05",
 ]
 
 

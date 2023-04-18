@@ -1,0 +1,10 @@
+[package]
+name = "nostalgia"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures = "0.3.28"
+tokio = { version = "1.27.0", features = ["full"] }
+hyper = { version = "0.14.26", features = ["http1", "tcp", "server"] }
+tokio-util = "0.7.7"
