@@ -1,0 +1,10 @@
+[package]
+name = "suffering"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+futures = "0.3.28"
+tokio = { version = "1.27.0", features = ["full"] }
+pin-project = "1.0"
