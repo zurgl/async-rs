@@ -17,9 +17,9 @@
     "files.exclude": {
       "target": true,
       "Cargo.lock": true,
-      "async01": false,
-      "async02": false,
-      "async03": false,
+      "async01": true,
+      "async02": true,
+      "async03": true,
     },
     "rust-analyzer.showUnlinkedFileNotification": false
   }
