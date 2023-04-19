@@ -6,6 +6,7 @@ members = [
   "async03",
   "async04",
   "async05",
+  "http-cc",
 ]
 
 
