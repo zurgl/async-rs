@@ -29,7 +29,7 @@ fn setup() -> color_eyre::Result<()> {
     Ok(())
 }
 
-fn set_tls_connecter() -> color_eyre::Result<TlsConnector> {
+fn set_tls_connector() -> color_eyre::Result<TlsConnector> {
     let mut root_store = RootCertStore::empty();
     for cert in rustls_native_certs::load_native_certs()? {
         root_store.add(&Certificate(cert.0))?;
@@ -48,7 +48,7 @@ fn set_tls_connecter() -> color_eyre::Result<TlsConnector> {
 async fn main() -> color_eyre::Result<()> {
     setup()?;
 
-    let connector = set_tls_connecter()?;
+    let connector = set_tls_connector()?;
 
     let before = Instant::now();
     let addr = "example.org:443"

@@ -2,7 +2,7 @@ use std::{net::ToSocketAddrs, str::FromStr, sync::Arc};
 
 use bytes::BytesMut;
 use color_eyre::eyre::eyre;
-use hp::h2::{self, Frame, FrameType};
+use hp::h2::{self, DataFlags, Frame, FrameType, HeadersFlags, SettingsFlags};
 use nom::Offset;
 use rustls::{Certificate, ClientConfig, KeyLogFile, RootCertStore};
 use tokio::{
@@ -63,9 +63,29 @@ async fn real_main() -> color_eyre::Result<()> {
     info!("Writing preface");
     stream.write_all(h2::PREFACE).await?;
 
-    let settings = Frame::new(FrameType::Settings, 0);
+    let settings = Frame::new(FrameType::Settings(Default::default()), 0);
     info!("> {settings:?}");
     settings.write(&mut stream).await?;
+
+    let mut encoder = hpack::Encoder::new();
+    let headers: &[(&[u8], &[u8])] = &[
+        (b":method", b"GET"),
+        (b":path", b"/"),
+        (b":scheme", b"https"),
+        (b":authority", b"example.org"),
+        (b"user-agent", b"fasterthanlime/http-crash-course"),
+        // http://www.gnuterrypratchett.com/
+        (b"x-clacks-overhead", b"GNU Terry Pratchett"),
+    ];
+    let mut headers_frame = Frame::new(
+        FrameType::Headers(HeadersFlags::EndHeaders | HeadersFlags::EndStream),
+        1,
+    );
+    headers_frame.payload.0 = encoder.encode(headers.iter().copied());
+    info!("> {headers_frame:?}");
+    headers_frame.write(&mut stream).await?;
+
+    let mut decoder = hpack::Decoder::new();
 
     let mut buf: BytesMut = Default::default();
     loop {
@@ -91,5 +111,57 @@ async fn real_main() -> color_eyre::Result<()> {
         };
 
         info!("< {frame:?}");
+        match &frame.frame_type {
+            FrameType::Settings(flags) => {
+                if !flags.contains(SettingsFlags::Ack) {
+                    info!("Acknowledging server settings");
+                    let settings = Frame::new(FrameType::Settings(SettingsFlags::Ack.into()), 0);
+                    info!("> {settings:?}");
+                    settings.write(&mut stream).await?;
+                }
+            }
+            FrameType::Headers(flags) => {
+                assert!(
+                    !flags.contains(HeadersFlags::Padded),
+                    "padding not supported"
+                );
+                assert!(
+                    !flags.contains(HeadersFlags::Priority),
+                    "priority not supported"
+                );
+                assert!(
+                    flags.contains(HeadersFlags::EndHeaders),
+                    "continuation frames not supported"
+                );
+
+                let headers = decoder.decode(&frame.payload.0).unwrap();
+                for (name, value) in headers {
+                    info!(
+                        "response header: {}: {}",
+                        String::from_utf8_lossy(&name),
+                        String::from_utf8_lossy(&value)
+                    );
+                }
+            }
+            FrameType::Data(flags) => {
+                assert!(!flags.contains(DataFlags::Padded), "padding not supported");
+                assert!(
+                    flags.contains(DataFlags::EndStream),
+                    "streaming response bodies not supported"
+                );
+
+                let response_body = String::from_utf8_lossy(&frame.payload.0);
+                info!(
+                    "response body: {}",
+                    &response_body[..std::cmp::min(100, response_body.len())]
+                );
+
+                info!("All done!");
+                return Ok(());
+            }
+            _ => {
+                // ignore other types of frames
+            }
+        }
     }
 }
