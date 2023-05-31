@@ -28,32 +28,32 @@ bytes = "1.4.0"
 hpack = "0.3.0"
 
 [[bin]]
-name = "hyp"
-path = "bin/hyp.rs"
+name = "h1-hyper"
+path = "bin/h1-hyper.rs"
 
 [[bin]]
-name = "sel"
-path = "bin/sel.rs"
+name = "h1-selfmade"
+path = "bin/h1-selfmade.rs"
 
 [[bin]]
-name = "req"
-path = "bin/req.rs"
+name = "h1-reqwest"
+path = "bin/h1-reqwest.rs"
 
 [[bin]]
-name = "h2h"
-path = "bin/h2h.rs"
+name = "h2-hyper"
+path = "bin/h2-hyper.rs"
 
 [[bin]]
-name = "h2r"
-path = "bin/h2r.rs"
+name = "h2-reqwest"
+path = "bin/h2-reqwest.rs"
 
 [[bin]]
-name = "hh"
-path = "bin/hh.rs"
+name = "h2-selfmade"
+path = "bin/h2-selfmade.rs"
 
 [lib]
-name = "hp"
+name = "httplib"
 path = "src/lib.rs" 
-#crate-type = ["cdylib"]
+
 bench = false
 test = false

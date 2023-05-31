@@ -1,2 +1,2 @@
-pub mod h2;
-pub mod http11;
+pub mod http1;
+pub mod http2;

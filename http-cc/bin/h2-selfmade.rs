@@ -2,7 +2,7 @@ use std::{net::ToSocketAddrs, str::FromStr, sync::Arc};
 
 use bytes::BytesMut;
 use color_eyre::eyre::eyre;
-use hp::h2::{self, DataFlags, Frame, FrameType, HeadersFlags, SettingsFlags};
+use httplib::http2::{self, DataFlags, Frame, FrameType, HeadersFlags, SettingsFlags};
 use nom::Offset;
 use rustls::{Certificate, ClientConfig, KeyLogFile, RootCertStore};
 use tokio::{
@@ -61,7 +61,7 @@ async fn real_main() -> color_eyre::Result<()> {
     info!("Establishing HTTP/2 connection...");
 
     info!("Writing preface");
-    stream.write_all(h2::PREFACE).await?;
+    stream.write_all(http2::PREFACE).await?;
 
     let settings = Frame::new(FrameType::Settings(Default::default()), 0);
     info!("> {settings:?}");

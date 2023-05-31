@@ -4,7 +4,7 @@ Below some note about crash course on http
 
 ## Basic stuff
 
-There is `2** = 65536` ports:
+There is `2**16 = 65536` ports:
 
 - http-prod: 80
 - https-prod: 433

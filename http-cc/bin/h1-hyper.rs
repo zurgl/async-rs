@@ -9,7 +9,6 @@ async fn main() {
         .with_safe_defaults()
         .with_native_roots()
         .with_no_client_auth();
-    // this is the fun option
     client_config.key_log = Arc::new(KeyLogFile::new());
 
     let conn = hyper_rustls::HttpsConnectorBuilder::new()

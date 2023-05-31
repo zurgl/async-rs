@@ -13,7 +13,7 @@ use tracing_subscriber::{filter::targets::Targets, layer::SubscriberExt, util::S
 use std::net::ToSocketAddrs;
 use tokio::time::Instant;
 
-use hp::http11;
+use httplib::http1;
 
 fn setup() -> color_eyre::Result<()> {
     color_eyre::install().unwrap();
@@ -93,7 +93,7 @@ async fn main() -> color_eyre::Result<()> {
 
         accum.extend_from_slice(&rd_buf[..n]);
 
-        match http11::response(&accum) {
+        match http1::response(&accum) {
             Err(e) => {
                 if e.is_incomplete() {
                     info!("Need to read more, continuing");
