@@ -20,4 +20,4 @@ respectively:
   * h2-h2: [Making HTTP/2 requests with h2](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-with-h2)
   * h2-ourselves: [Making HTTP/2 requests ourselves](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-ourselves)
 
-The only async article missing if [The curse of strong typing](https://fasterthanli.me/articles/the-curse-of-strong-typing)
+The only async article missing is [The curse of strong typing](https://fasterthanli.me/articles/the-curse-of-strong-typing)
