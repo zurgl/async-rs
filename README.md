@@ -2,7 +2,8 @@
 
 async-rs example
 
-It's a compilation (with some fix and rewrite du to some crate update) of the article dealing with `async` from [fasterthanlime](https://fasterthanli.me). Some crate haven't been upgraded as the goal is to keep track of rust async code pattern evolution.
+It's a compilation (with some fix and rewrite du to some crate update) of the article dealing with `async` from [fasterthanlime](https://fasterthanli.me). 
+Some crate haven't been upgraded as the goal is to keep track of rust async code pattern evolution.
 
 respectively:
 
