@@ -16,6 +16,6 @@ respectively:
   * h1-myself => [Making HTTP/1.1 requests ourselves](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-1-1-requests-ourselves)
   * h1-reqwest => [Making HTTP/2 requests with hyper](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-with-hyper)
   * h1-hyper => [Making HTTP/2 requests with h2](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-with-h2)
-  * h1-myself => [https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-ourselves](Making HTTP/2 requests ourselves)
+  * h1-myself => [Making HTTP/2 requests ourselves](https://fasterthanli.me/articles/the-http-crash-course-nobody-asked-for#making-http-2-requests-ourselves)
 
 The only async article missing if [The curse of strong typing](https://fasterthanli.me/articles/the-curse-of-strong-typing)
