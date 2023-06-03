@@ -1,4 +1,4 @@
-use suffering::SlowRead;
+use async03::SlowRead;
 use tokio::{fs::File, io::AsyncReadExt, time::Instant};
 
 #[tokio::main]

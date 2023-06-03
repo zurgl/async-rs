@@ -216,6 +216,57 @@ dependencies = [
 ]
 
 [[package]]
+name = "async02"
+version = "0.1.0"
+dependencies = [
+ "argh",
+ "async-std",
+ "async-trait",
+ "color-eyre",
+ "futures",
+ "futures-timer",
+ "pin-project",
+ "sha3",
+ "tracing",
+ "tracing-futures",
+ "tracing-subscriber",
+ "tracing-tree",
+]
+
+[[package]]
+name = "async03"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "pin-project",
+ "tokio 1.27.0",
+]
+
+[[package]]
+name = "async04"
+version = "0.1.0"
+dependencies = [
+ "color-eyre",
+ "futures",
+ "tokio 1.27.0",
+ "tokio-rustls",
+ "tracing",
+ "tracing-subscriber",
+ "webpki",
+ "webpki-roots",
+]
+
+[[package]]
+name = "async05"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "hyper 0.14.26",
+ "tokio 1.27.0",
+ "tokio-util 0.7.7",
+]
+
+[[package]]
 name = "atomic-waker"
 version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1352,16 +1403,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "nostalgia"
-version = "0.1.0"
-dependencies = [
- "futures",
- "hyper 0.14.26",
- "tokio 1.27.0",
- "tokio-util 0.7.7",
-]
-
-[[package]]
 name = "nu-ansi-term"
 version = "0.46.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2016,33 +2057,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
-name = "suffering"
-version = "0.1.0"
-dependencies = [
- "futures",
- "pin-project",
- "tokio 1.27.0",
-]
-
-[[package]]
-name = "surviving"
-version = "0.1.0"
-dependencies = [
- "argh",
- "async-std",
- "async-trait",
- "color-eyre",
- "futures",
- "futures-timer",
- "pin-project",
- "sha3",
- "tracing",
- "tracing-futures",
- "tracing-subscriber",
- "tracing-tree",
-]
-
-[[package]]
 name = "syn"
 version = "1.0.109"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2530,20 +2544,6 @@ name = "wasm-bindgen-shared"
 version = "0.2.84"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0046fef7e28c3804e5e38bfa31ea2a0f73905319b677e57ebe37e49358989b5d"
-
-[[package]]
-name = "waytoodeep"
-version = "0.1.0"
-dependencies = [
- "color-eyre",
- "futures",
- "tokio 1.27.0",
- "tokio-rustls",
- "tracing",
- "tracing-subscriber",
- "webpki",
- "webpki-roots",
-]
 
 [[package]]
 name = "web-sys"

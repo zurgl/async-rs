@@ -16,7 +16,7 @@
     },
     "files.exclude": {
       "target": true,
-      "Cargo.lock": true,
+      "Cargo.lock": false,
       "async01": false,
       "async02": false,
       "async03": false,
